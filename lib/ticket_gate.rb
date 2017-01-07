@@ -10,7 +10,7 @@ class TicketGate
       return false
     end
 
-    ticket.enter(@station)
+    ticket.mark_enteried(@station)
     true
   end
 
@@ -35,7 +35,7 @@ class TicketGate
       return false
     end
 
-    ticket.exit(@station)
+    ticket.mark_exited(@station)
     true
   end
 

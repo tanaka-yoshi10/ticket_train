@@ -15,11 +15,11 @@ class Ticket
     @exit
   end
 
-  def enter(station)
+  def mark_enteried(station)
     @entry = station
   end
 
-  def exit(station)
+  def mark_exited(station)
     @exit = station
   end
 end
