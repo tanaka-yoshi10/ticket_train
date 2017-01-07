@@ -15,8 +15,8 @@ class TicketGate
   end
 
   def exit(ticket)
-    table = {梅田:1, 十三: 2, 庄内: 3, 岡町: 4}
-    fee = [0, 150, 180, 220]
+    station_positions = {梅田:1, 十三: 2, 庄内: 3, 岡町: 4}
+    fees = [0, 150, 180, 220]
 
     unless ticket.entried?
       @errors.push "入場記録なし"
@@ -28,19 +28,23 @@ class TicketGate
       return false
     end
 
-    distance = (table[ticket.entry] - table[@station]).abs
-    if distance == 0
+    if ticket.entry == @station
       @errors.push "同一駅"
       return false
     end
 
-    if ticket.price < fee[distance]
+    distance = (station_positions[ticket.entry] - station_positions[@station]).abs
+    if ticket.price < fees[distance]
       @errors.push "料金不足"
       return false
     end
 
     ticket.exit(@station)
     true
+  end
+
+  def calculate(entry, exit)
+
   end
 
   def last_error
