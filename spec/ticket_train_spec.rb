@@ -67,4 +67,11 @@ describe TicketTrain do
     expect(ticket.enter(:梅田)).to eq(true)
     expect(ticket.exit(:梅田)).to eq(false)
   end
+
+  it 'scenario11' do
+    ticket = Ticket.new(150)
+    expect(ticket.enter(:梅田)).to eq(true)
+    expect(ticket.enter(:梅田)).to eq(false)
+    expect(ticket.errors).to match_array(["入場済み"])
+  end
 end
