@@ -70,6 +70,8 @@ describe TicketTrain do
 
     expect(okamachi_gate.enter(ticket)).to be_truthy
     expect(juso_gate.exit(ticket)).to be_truthy
+
+    # 他にも逆パターンあっても良いかも
   end
 
   it 'シナリオ10（同じ駅で降りる）' do
@@ -77,6 +79,7 @@ describe TicketTrain do
 
     expect(umeda_gate.enter(ticket)).to be_truthy
     expect(umeda_gate.exit(ticket)).to be_falsey
+    expect(umeda_gate.last_error).to eq("同一駅")
   end
 
   it 'シナリオ11（一度入場した切符でもう一度入場する）' do
