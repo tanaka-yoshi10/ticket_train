@@ -42,4 +42,8 @@ class TicketGate
     ticket.exit(@station)
     true
   end
+
+  def last_error
+    @errors.last
+  end
 end
